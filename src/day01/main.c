@@ -3,6 +3,14 @@
 
 /*
 *
+* Constants
+*
+*/
+char BUF[256];
+int BASE = 10;
+
+/*
+*
 * Function prototypes
 *
 */
@@ -19,7 +27,6 @@ int main() {
      FILE *fd = fopen("input.txt", "r");
      
      fprintf(stdout, "The elf with the most calories has %d calories.\n", calculate_max_calories(fd));
-
      rewind(fd);
      calculate_top_three(fd);
      
@@ -34,18 +41,16 @@ int main() {
 *
 */
 int calculate_max_calories(FILE *fd) {
-     char buf[256];
      long max_cals = 0, total = 0;
-     int base = 10;
 
-     while(fgets(buf, sizeof(buf), fd) != NULL) {
-          if (buf[0] == '\n' || buf[0] == '\r') {
+     while(fgets(BUF, sizeof(BUF), fd) != NULL) {
+          if (BUF[0] == '\n' || BUF[0] == '\r') {
                if (total > max_cals) {
                     max_cals = total;
                }
                total = 0;
           } else {
-               total += strtol(buf, NULL, base);
+               total += strtol(BUF, NULL, BASE);
           }
      }
 
@@ -58,12 +63,10 @@ int calculate_max_calories(FILE *fd) {
 *
 */
 void calculate_top_three(FILE *fd) {
-     char buf[256];
      long total = 0, first_elf = 0, second_elf = 0, third_elf = 0;
-     int base = 10;
 
-     while(fgets(buf, sizeof(buf), fd) != NULL) {
-          if (buf[0] == '\n' || buf[0] == '\r') {
+     while(fgets(BUF, sizeof(BUF), fd) != NULL) {
+          if (BUF[0] == '\n' || BUF[0] == '\r') {
                if (total > first_elf) {
                     third_elf = second_elf;
                     second_elf = first_elf;
@@ -76,7 +79,7 @@ void calculate_top_three(FILE *fd) {
                }
                total = 0;
           } else {
-               total += strtol(buf, NULL, base);
+               total += strtol(BUF, NULL, BASE);
           }
      }
 
