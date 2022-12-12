@@ -82,5 +82,3 @@ void calculate_top_three(FILE *fd) {
 
      fprintf(stdout, "The sum of the top three elves is %ld.\n", first_elf + second_elf + third_elf);
 }
-
-
