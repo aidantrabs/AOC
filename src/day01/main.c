@@ -14,7 +14,7 @@ int BASE = 10;
 * Function prototypes
 *
 */
-int calculate_max_calories(FILE *fd);
+long calculate_max_calories(FILE *fd);
 void calculate_top_three(FILE *fd);
 
 
@@ -26,7 +26,7 @@ void calculate_top_three(FILE *fd);
 int main() {
      FILE *fd = fopen("input.txt", "r");
      
-     fprintf(stdout, "The elf with the most calories has %d calories.\n", calculate_max_calories(fd));
+     fprintf(stdout, "The elf with the most calories has %ld calories.\n", calculate_max_calories(fd));
      rewind(fd);
      calculate_top_three(fd);
      
@@ -40,7 +40,7 @@ int main() {
 * Calculates the maximum calories consumed by an elf.
 *
 */
-int calculate_max_calories(FILE *fd) {
+long calculate_max_calories(FILE *fd) {
      long max_cals = 0, total = 0;
 
      while(fgets(BUF, sizeof(BUF), fd) != NULL) {
