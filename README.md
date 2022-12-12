@@ -17,7 +17,7 @@ Every 5 days will be written in a different language
   </tr>
   <tr>
     <td> C </td>
-    <td>  </td>
+    <td> Python </td>
     <td>  </td>
     <td>  </td>
     <td>  </td>
